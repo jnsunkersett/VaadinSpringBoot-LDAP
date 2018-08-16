@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -64,8 +66,8 @@ public class Application {
 */
 	
 	@Bean
-	public CommandLineRunner loadData(CustomerRepository repository) {
-	//public CommandLineRunner loadData(LDIFRepository repository) {
+	//public CommandLineRunner loadData(CustomerRepository repository) {
+	public CommandLineRunner loadData(LDIFRepository repository) {
 		return (args) -> {
 			// save a couple of customers
 			//repository.save(new Customer("Jack", "Bauer"));
@@ -74,9 +76,10 @@ public class Application {
 			//repository.save(new Customer("David", "Palmer"));
 			//repository.save(new Customer("Michelle", "Dessler"));
 			
-			PersonRepository persons = new PersonRepository();
-			persons.findAll();
-			repository.findAll();
+			List listPersons = repository.findAll(); 
+			//PersonRepository persons = new PersonRepository();
+			//persons.findAll();
+			//repository.findAll();
 			
 			/*-
 			// fetch all customers
