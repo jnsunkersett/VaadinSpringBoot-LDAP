@@ -2,6 +2,7 @@ package hello.repository;
 
 import static org.springframework.ldap.query.LdapQueryBuilder.query;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.naming.Name;
@@ -61,6 +62,13 @@ public class PersonRepository implements BaseLdapNameAware {
         LdapQuery q = query()
                 .where("objectclass").is("person")
                 .and("cn").whitespaceWildcardsLike(name);
+        return ldapTemplate.search(q, new PersonContextMapper());
+    }
+
+    public List<Person> findByOrgUnit(String name) {
+        LdapQuery q = query()
+                .where("objectclass").is("person")
+                .and("ou").whitespaceWildcardsLike(name);
         return ldapTemplate.search(q, new PersonContextMapper());
     }
 

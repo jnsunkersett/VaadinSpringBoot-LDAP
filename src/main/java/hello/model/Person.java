@@ -1,8 +1,14 @@
 package hello.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
 public class Person {
+
+	@Id
+	@GeneratedValue
+	private Long id;
 
 	@NotEmpty 
     private String uid;
@@ -20,6 +26,10 @@ public class Person {
 
     public Person() {
     }
+
+	public Long getId() {
+		return id;
+	}
 
     public Person(String fullName, String lastName) {
         this.fullName = fullName;

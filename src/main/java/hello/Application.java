@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import hello.repository.LDIFRepository;
 import hello.repository.PersonRepository;
 
 @Configuration
@@ -67,9 +66,10 @@ public class Application {
 	
 	@Bean
 	//public CommandLineRunner loadData(CustomerRepository repository) {
-	public CommandLineRunner loadData(LDIFRepository repository) {
+	public CommandLineRunner loadData(PersonRepository repository) {
 		return (args) -> {
 			List listPersons = repository.findAll(); 
+			int i = 3;
 			//PersonRepository persons = new PersonRepository();
 			//persons.findAll();
 			//repository.findAll();
